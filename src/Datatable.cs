@@ -13,14 +13,16 @@ namespace Datatables.Extensions
 		private readonly string _selector;
 		private readonly string _url;
 		private Namespaces.Datatables _datatables;
+		private readonly bool _filter;
 
 		private IList<string> _columns;
 
-		public Datatable(Namespaces.Datatables datatables, string selector, string url)
+		public Datatable(Namespaces.Datatables datatables, string selector, string url, bool filter = true)
 		{
 			_selector = selector;
 			_url = url;
 			_datatables = datatables;
+			_filter = filter;
 			_columns = new List<string>();
 		}
 
@@ -95,10 +97,10 @@ namespace Datatables.Extensions
 			sb.AppendFormat(@"$('{0}').DataTable({{
 				'serverSide': true,
 				'processing': true,
-				'filter': false,
+				'filter': {1},
 				'sorting': [],
-				'ajax': '{1}',
-				'columns': [", _selector, _url);
+				'ajax': '{2}',
+				'columns': [", _selector, _filter.ToString().ToLower(), _url);
 
 			foreach (string column in _columns)
 			{
