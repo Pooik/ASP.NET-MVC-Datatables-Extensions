@@ -37,6 +37,15 @@ namespace Datatables.Extensions
 			return AddLinkColumn(name, actionName, controllerName, null, routeValues);
 		}
 
+		public Datatable AddCustomJavascriptColumn(string name, string javascript)
+		{
+			_columns.Add(InsertComma(string.Format(@"{{ 'data': '{0}', 'orderable': false, 'render': function ( data, type, full, meta ) {{
+				{1}
+					}}
+				}}", name, javascript)));
+			return this;
+		}
+
 		public Datatable AddLinkColumn(string name, string actionName, string controllerName, string areaName = null, object routeValues = null)
 		{
 			RouteValueDictionary attributes = new RouteValueDictionary(routeValues);
