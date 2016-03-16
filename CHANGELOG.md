@@ -1,1 +1,0 @@
-# ASP.NET MVC Datatables ExtensionsASP.NET MVC extension methods for jQuery [Datatables](http://datatables.net).##Changelog###1.0.2.0* Added custom javascript column (AddCustomJavascriptColumn method)###1.0.1.0*  Added parameter for showing/hiding filter. Default value is true.###1.0.0.0* Initial commit
